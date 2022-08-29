@@ -27,14 +27,7 @@ paths:
          content:
           application/json:
             schema:
-              type: object
-              properties:
-                KM:
-                  type: array
-                  items:
-                    type: string
-                    maxLength: 200
-                  uniqueItems: true
+              $ref: '#/schemas/status_body.json'
       responses:
         '200':
           description: Операция успешна
