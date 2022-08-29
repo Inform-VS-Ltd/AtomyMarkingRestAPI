@@ -1,0 +1,57 @@
+openapi: 3.0.3
+info:
+  title: Сервисы Атоми "Честный знак" 
+  description: |- 
+  contact:
+    email: avasiliev@inform-vs.ru
+  version: 1.0.0
+servers:
+  - url: http://62.117.95.243/TEST_Atomy_2/hs/marking
+paths:
+  /status:
+    post:
+      tags:
+          - Статус марки
+      summary: Получить статус контрольной марки
+      description: |-
+        Возвращает перечень контрольных марок, переданных в теле запроса, с их статусами по данным честного знака. 
+          Перечень возможных статусов:
+           - UNDEFINED - не удалось найти код маркировки в базе данных
+           - EMITTED - Эмитирован
+           - APPLIED - Нанесен
+           - INTRODUCED - Введен в оборот
+           - RETIRED - Выведен из оборота
+           - WRITTEN_OFF - Списан
+      operationId: getMarkStatus
+      requestBody:
+         content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                KM:
+                  type: array
+                  items:
+                    type: string
+                    maxLength: 200
+                  uniqueItems: true
+      responses:
+        '200':
+          description: Операция успешна
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '500':
+          description: Ошибка при выполнении запроса статусов
+        '400':
+          description: Некорректные параметры запроса
+security:
+  - basicAuth: []  
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
