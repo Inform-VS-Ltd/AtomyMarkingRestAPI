@@ -60,3 +60,4 @@ components:
     basicAuth:
       type: http
       scheme: basic
+      
