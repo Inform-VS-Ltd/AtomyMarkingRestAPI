@@ -27,7 +27,15 @@ paths:
          content:
           application/json:
             schema:
-              $ref: '#/schemas/status_body.json'
+              type: object
+              properties:
+                KM:
+                  type: array
+                  items:
+                    type: string
+                    maxLength: 200
+                  example: ["(01)08809258222804(21)5!/18XHX:QQe-", "(01)08809258222804(21)5!LCgQ\"y)AjhI", "sfwefew33rffsdf"]
+                  uniqueItems: true
       responses:
         '200':
           description: Операция успешна
@@ -37,6 +45,10 @@ paths:
                 type: object
                 additionalProperties:
                   type: string
+                example:
+                  "sfwefew33rffsdf": "UNDEFINED"
+                  "(01)08809258222804(21)5!LCgQ\"y)AjhI": "EMITTED"
+                  "(01)08809258222804(21)5!/18XHX:QQe-": "EMITTED"
         '500':
           description: Ошибка при выполнении запроса статусов
         '400':
