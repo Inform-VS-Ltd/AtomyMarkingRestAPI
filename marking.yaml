@@ -34,7 +34,7 @@ paths:
                   items:
                     type: string
                     maxLength: 200
-                  example: ["(01)08809258222804(21)5!/18XHX:QQe-", "(01)08809258222804(21)5!LCgQ\"y)AjhI", "sfwefew33rffsdf"]
+                  example: ["0108809258222804215!/18XHX:QQe-", "0108809258222804215!LCgQ\"y)AjhI", "sfwefew33rffsdf"]
                   uniqueItems: true
       responses:
         '200':
@@ -47,8 +47,8 @@ paths:
                   type: string
                 example:
                   "sfwefew33rffsdf": "UNDEFINED"
-                  "(01)08809258222804(21)5!LCgQ\"y)AjhI": "EMITTED"
-                  "(01)08809258222804(21)5!/18XHX:QQe-": "EMITTED"
+                  "0108809258222804215!LCgQ\"y)AjhI": "EMITTED"
+                  "0108809258222804215!/18XHX:QQe-": "EMITTED"
         '500':
           description: Ошибка при выполнении запроса статусов
         '400':
